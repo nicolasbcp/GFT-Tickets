@@ -1,0 +1,33 @@
+@model IEnumerable<GFT_Tickets.Models.CasaDeShow>
+@{
+    ViewData["Title"] = "Casas de Show";
+}
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-success mb-5" asp-controller="CasasDeShow" asp-action="Cadastrar">Nova Casa de Show</a>
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Ações</th>
+    </tr>
+    <tbody>
+        @foreach (var casadeshow in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => casadeshow.Id)</td>
+                <td>@Html.DisplayFor(model => casadeshow.Nome)</td>
+                <td>@Html.DisplayFor(model => casadeshow.Endereco)</td>
+                <td><a class="btn btn-success" href="">Editar</a> 
+
+                <form style="display: inline;">
+                    <input type="hidden" name="id" id="id" value="@casadeshow.Id">
+                    <button class="btn btn-danger">Excluir</button>
+                </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

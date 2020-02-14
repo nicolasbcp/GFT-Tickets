@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GFT_Tickets.Models;
+using GFT_Tickets.Data;
 
 namespace GFT_Tickets.Controllers
 {
@@ -19,6 +20,11 @@ namespace GFT_Tickets.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+        
+        public IActionResult Eventos()
         {
             return View();
         }
