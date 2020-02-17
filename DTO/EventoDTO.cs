@@ -18,9 +18,9 @@ namespace GFT_Tickets.DTO
         public DateTime Data {get; set;}
         [Required(ErrorMessage="Este campo é obrigatório.")]
         public float ValorUnitario {get; set;}
+        [Required(ErrorMessage="Não possível cadastrar evento, pois não existem casas de show.")]
+        public int CasaDeShowID {get; set;}
         [Required(ErrorMessage="Este campo é obrigatório.")]
-        public CasaDeShow CasaDeShow {get; set;}
-        [Required(ErrorMessage="Este campo é obrigatório.")]
-        public GeneroMusical GeneroMusical {get; set;}
+        public int GeneroMusicalID {get; set;}
     }
 }

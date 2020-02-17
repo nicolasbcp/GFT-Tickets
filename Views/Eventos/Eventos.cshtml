@@ -1,0 +1,46 @@
+@model IEnumerable<GFT_Tickets.Models.Evento>
+@{
+    ViewData["Title"] = "Eventos";
+}
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-success mb-5" asp-controller="Eventos" asp-action="Cadastrar">Novo Evento</a>
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Capacidade</th>
+        <th>Data</th>
+        <th>Valor Unitário</th>
+        <th>Casa de Show</th>
+        <th>Gênero Musical</th>
+        <th>Ações</th>
+    </tr>
+    <tbody>
+        @foreach (var evento in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => evento.Id)</td>
+                <td>@Html.DisplayFor(model => evento.Nome)</td>
+                <td>@Html.DisplayFor(model => evento.Capacidade)</td>
+                <td>@Html.DisplayFor(model => evento.Data)</td>
+                <td>@Html.DisplayFor(model => evento.ValorUnitario)</td>
+                <td>@Html.DisplayFor(model => evento.CasaDeShow.Nome)</td>
+                <td>@Html.DisplayFor(model => evento.GeneroMusical.Nome)</td>
+                <td><a class="btn btn-success" href="/Eventos/Editar/@evento.Id">Editar</a> 
+
+                <form asp-action="Deletar" asp-controller="Eventos" style="display: inline;">
+                    <input type="hidden" name="id" id="id" value="@evento.Id">
+                    <button class="btn btn-danger">Excluir</button>
+                </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* /Eventos/Editar/@eventos.Id
+
+asp-action="Deletar" asp-controller="CasasDeShow" 
+<input type="hidden" name="id" id="id" value="@casadeshow.Id"> *@

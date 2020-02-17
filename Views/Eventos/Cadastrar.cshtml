@@ -1,0 +1,36 @@
+@model GFT_Tickets.Models.Evento
+
+<h2>Cadastrar Evento</h2>
+
+<form class="form-horizontal" asp-controller="Eventos" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0">
+    
+    <label asp-for="Nome" class="mt-4">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control mb-2" placeholder="Nome do Evento">
+    <span asp-validation-for="Nome"></span>
+
+    <label asp-for="Capacidade">Capacidade</label>
+    <input type="number" asp-for="Capacidade" class="form-control mb-2" placeholder="Capacidade">
+    <span asp-validation-for="Capacidade"></span>
+
+    <label asp-for="Data">Data</label>
+    <input type="date" asp-for="Data" class="form-control mb-2" placeholder="Data">
+    <span asp-validation-for="Data"></span>
+
+    <label asp-for="ValorUnitario">Valor Unitário</label>
+    <input type="number" asp-for="ValorUnitario" class="form-control mb-2" placeholder="Valor Unitário">
+    <span asp-validation-for="ValorUnitario"></span>
+
+    <label asp-for="CasaDeShowID">Nome da Casa de Show</label>
+    <select class="form-control mb-2" asp-for="CasaDeShowID" asp-items='@ViewBag.CasasDeShow'></select>
+
+    <label asp-for="GeneroMusicalID">Gênero Musical</label>
+    <select class="form-control mb-2" asp-for="GeneroMusicalID" asp-items='@ViewBag.GeneroMusical'></select>
+    
+
+    <button class="btn btn-success mt-4">Cadastrar</button>
+</form>
+
+@section scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

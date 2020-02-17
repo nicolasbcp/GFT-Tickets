@@ -62,7 +62,7 @@ namespace GFT_Tickets
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Eventos}/{action=Eventos}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

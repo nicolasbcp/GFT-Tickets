@@ -14,15 +14,24 @@ namespace GFT_Tickets.Controllers
         public CasasDeShowController(ApplicationDbContext database) {
             this.database = database;
         }
+        
+        public IActionResult CasasDeShow()
+        {
+            var casasdeshow = database.CasasDeShow.ToList();
+            return View(casasdeshow);
+        }
 
         public IActionResult Cadastrar() {
             return View();
         }
 
-        public IActionResult CasasDeShow()
-        {
-            var casasdeshow = database.CasasDeShow.ToList();
-            return View(casasdeshow);
+        public IActionResult Editar(int id) {
+            var casadeshow = database.CasasDeShow.First(casadeshow => casadeshow.Id == id);
+            CasaDeShowDTO casadeshowView = new CasaDeShowDTO();
+            casadeshowView.Id = casadeshow.Id;
+            casadeshowView.Nome = casadeshow.Nome;
+            casadeshowView.Endereco = casadeshow.Endereco;
+            return View(casadeshowView); 
         }
 
         [HttpPost]
@@ -33,7 +42,7 @@ namespace GFT_Tickets.Controllers
                 casadeshow.Endereco = casaTemp.Endereco;
                 database.CasasDeShow.Add(casadeshow);
                 database.SaveChanges();
-                return View(nameof(CasasDeShow));
+                return RedirectToAction("CasasDeShow", "CasasDeShow");
             } else {
                 return View("../CasasDeShow/Cadastrar");
             }
@@ -46,18 +55,18 @@ namespace GFT_Tickets.Controllers
                 casadeshow.Nome = casaTemp.Nome;
                 casadeshow.Endereco = casaTemp.Endereco;
                 database.SaveChanges();
-                return View(nameof(CasasDeShow));
+                return RedirectToAction("CasasDeShow", "CasasDeShow");
             } else {
                 return View("../CasasDeShow/Editar");
             }
         }
 
         [HttpPost]
-        public IActionResult Deletar(CasaDeShowDTO casaTemp) {
-            var casadeshow = database.CasasDeShow.First(casadeshow => casadeshow.Id == casaTemp.Id);
-            database.CasasDeShow.Remove(casadeshow);
-            database.SaveChanges();
-            return View(nameof(CasasDeShow));
+        public IActionResult Deletar(int id) {
+                var casadeshow = database.CasasDeShow.First(casadeshow => casadeshow.Id == id);
+                database.CasasDeShow.Remove(casadeshow);
+                database.SaveChanges();
+                return RedirectToAction("CasasDeShow", "CasasDeShow");
         }
     }
 }

@@ -4,11 +4,14 @@
 <hr>
 <form class="form-horizontal" asp-controller="CasasDeShow" asp-action="Atualizar" method="POST">
     <input type="hidden" asp-for="Id">
+
     <label asp-for="Nome">Nome</label>
     <input type="text" asp-for="Nome" class="form-control mb-2" placeholder="Nome da Casa de Show">
     <span asp-validation-for="Nome"></span>
+
     <label asp-for="Endereco">Endereço</label>
     <input type="text" asp-for="Endereco" class="form-control" placeholder="Endereço da Casa de Show">
     <span asp-validation-for="Endereco"></span>
+    
     <button class="btn btn-success mt-4">Atualizar</button>
 </form>

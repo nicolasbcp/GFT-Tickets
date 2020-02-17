@@ -20,9 +20,9 @@
                 <td>@Html.DisplayFor(model => casadeshow.Id)</td>
                 <td>@Html.DisplayFor(model => casadeshow.Nome)</td>
                 <td>@Html.DisplayFor(model => casadeshow.Endereco)</td>
-                <td><a class="btn btn-success" href="">Editar</a> 
+                <td><a class="btn btn-success" href="/CasasDeShow/Editar/@casadeshow.Id">Editar</a> 
 
-                <form style="display: inline;">
+                <form asp-action="Deletar" asp-controller="CasasDeShow" style="display: inline;">
                     <input type="hidden" name="id" id="id" value="@casadeshow.Id">
                     <button class="btn btn-danger">Excluir</button>
                 </form>

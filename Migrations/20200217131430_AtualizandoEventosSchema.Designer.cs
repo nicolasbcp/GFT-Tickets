@@ -3,14 +3,16 @@ using System;
 using GFT_Tickets.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GFT_Tickets.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200217131430_AtualizandoEventosSchema")]
+    partial class AtualizandoEventosSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace GFT_Tickets.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("GeneroMusicalID")
+                    b.Property<int?>("GeneroMusicalId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
@@ -62,7 +64,7 @@ namespace GFT_Tickets.Migrations
 
                     b.HasIndex("CasaDeShowID");
 
-                    b.HasIndex("GeneroMusicalID");
+                    b.HasIndex("GeneroMusicalId");
 
                     b.ToTable("Eventos");
                 });
@@ -340,9 +342,7 @@ namespace GFT_Tickets.Migrations
 
                     b.HasOne("GFT_Tickets.Models.GeneroMusical", "GeneroMusical")
                         .WithMany()
-                        .HasForeignKey("GeneroMusicalID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GeneroMusicalId");
                 });
 
             modelBuilder.Entity("GFT_Tickets.Models.Venda", b =>

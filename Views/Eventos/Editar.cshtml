@@ -1,0 +1,31 @@
+@model GFT_Tickets.DTO.EventoDTO;
+
+<h1 class="h2">Editar Evento</h1>
+<hr>
+<form class="form-horizontal" asp-controller="Eventos" asp-action="Atualizar" method="POST">
+    <input type="hidden" asp-for="Id">
+
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control mb-2" placeholder="Nome da Casa de Show">
+    <span asp-validation-for="Nome"></span>
+
+    <label asp-for="Capacidade">Capacidade</label>
+    <input type="number" asp-for="Capacidade" class="form-control mb-2" placeholder="Nome da Casa de Show">
+    <span asp-validation-for="Capacidade"></span>
+
+    <label asp-for="Data">Data</label>
+    <input type="date" asp-for="Data" class="form-control mb-2" placeholder="Nome da Casa de Show">
+    <span asp-validation-for="Data"></span>
+
+    <label asp-for="ValorUnitario">Valor Unitário</label>
+    <input type="number" asp-for="ValorUnitario" class="form-control mb-2" placeholder="Nome da Casa de Show">
+    <span asp-validation-for="ValorUnitario"></span>
+
+    <label asp-for="CasaDeShowID">Casa de Show</label>
+    <select class="form-control mb-2" asp-for="CasaDeShowID" asp-items='@ViewBag.CasasDeShow'></select>
+
+    <label asp-for="GeneroMusicalID">Gênero Musical</label>
+    <select class="form-control mb-2" asp-for="GeneroMusicalID" asp-items='@ViewBag.GeneroMusical'></select>
+    
+    <button class="btn btn-success mt-4">Atualizar</button>
+</form>
