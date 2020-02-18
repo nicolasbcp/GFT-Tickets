@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using GFT_Tickets.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace GFT_Tickets.DTO
 {
@@ -11,6 +12,6 @@ namespace GFT_Tickets.DTO
         [StringLength(100, ErrorMessage="Limite de caracteres: 100.")]
         [MinLength(3, ErrorMessage="Mínimo de caracteres: 3.")]
         public string Nome {get; set;}
-        public string Imagem {get; set;}
+        public IFormFile Imagem {get; set;}
     }
 }

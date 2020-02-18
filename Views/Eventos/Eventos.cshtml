@@ -27,7 +27,7 @@
                 <td>@Html.DisplayFor(model => evento.Data)</td>
                 <td>@Html.DisplayFor(model => evento.ValorUnitario)</td>
                 <td>@Html.DisplayFor(model => evento.CasaDeShow.Nome)</td>
-                <td>@Html.DisplayFor(model => evento.GeneroMusical.Nome)</td>
+                <td><img src="@Html.DisplayFor(model => evento.GeneroMusical.Imagem)" style="border-radius: 50%" height="100" width="100"></td>
                 <td><a class="btn btn-success" href="/Eventos/Editar/@evento.Id">Editar</a> 
 
                 <form asp-action="Deletar" asp-controller="Eventos" style="display: inline;">

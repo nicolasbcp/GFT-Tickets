@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Gênero Musical";
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <h1>@ViewData["Title"]</h1>
 
 <a class="btn btn-success mb-5" asp-controller="GeneroMusical" asp-action="Cadastrar">Novo Gênero Musical</a>
@@ -10,6 +11,7 @@
     <tr>
         <th>Id</th>
         <th>Nome</th>
+        <th>Imagem</th>
         <th>Ações</th>
     </tr>
     <tbody>
@@ -18,12 +20,15 @@
             <tr>
                 <td>@Html.DisplayFor(model => generomusical.Id)</td>
                 <td>@Html.DisplayFor(model => generomusical.Nome)</td>
-                <td><a class="btn btn-success" href="/GeneroMusical/Editar/@generomusical.Id">Editar</a> 
+                <td>
+                    <img src="@generomusical.Imagem" style="border-radius: 50%" height="100" width="100" alt="">
+                <td>
+                    <a class="btn btn-success" href="/GeneroMusical/Editar/@generomusical.Id">Editar</a> 
 
-                <form asp-action="Deletar" asp-controller="GeneroMusical" style="display: inline;">
-                    <input type="hidden" name="id" id="id" value="@generomusical.Id">
-                    <button class="btn btn-danger">Excluir</button>
-                </form>
+                    <form asp-action="Deletar" asp-controller="GeneroMusical" style="display: inline;">
+                        <input type="hidden" name="id" id="id" value="@generomusical.Id">
+                        <button class="btn btn-danger">Excluir</button>
+                    </form>
                 </td>
             </tr>
         }
