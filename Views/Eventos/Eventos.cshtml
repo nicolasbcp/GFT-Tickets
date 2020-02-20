@@ -34,13 +34,9 @@
                     <input type="hidden" name="id" id="id" value="@evento.Id">
                     <button class="btn btn-danger">Excluir</button>
                 </form>
+                <a class="btn btn-primary mt-2 ml-4" asp-controller="Vendas" asp-action="Vendas" asp-route-id="@evento.Id">Comprar</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-@* /Eventos/Editar/@eventos.Id
-
-asp-action="Deletar" asp-controller="CasasDeShow" 
-<input type="hidden" name="id" id="id" value="@casadeshow.Id"> *@

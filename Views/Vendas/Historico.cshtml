@@ -1,0 +1,26 @@
+@model IEnumerable<GFT_Tickets.Models.Venda>
+@{
+    ViewData["Title"] = "Histórico de Compras";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>Evento</th>
+        <th>Quantidade de Ingressos</th>
+        <th>Valor Final</th>
+        <th>Data de Compra</th>
+
+    </tr>
+    <tbody>
+        @foreach (var venda in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => venda.Evento.Nome)</td>
+                <td>@Html.DisplayFor(model => venda.QuantidadeTicket)</td>
+                <td>@Html.DisplayFor(model => venda.TotalVenda)</td>
+                <td>@Html.DisplayFor(model => venda.DataVenda)</td>
+            </tr>
+        }
+    </tbody>
+</table>

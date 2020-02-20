@@ -1,0 +1,41 @@
+@model GFT_Tickets.Models.Venda
+
+<h2>Confirmar Compra</h2>
+
+<form class="form-horizontal" asp-controller="Vendas" asp-action="Historico" method="POST">
+    <input type="hidden" asp-for="Id" value="0">
+    
+    <label asp-for="Evento.Nome" class="mt-4">Nome</label>
+    <input type="text" asp-for="Evento.Nome" class="form-control mb-2" readonly>
+
+    <label asp-for="Evento.Data">Data</label>
+    <input type="date" asp-for="Evento.Data" class="form-control mb-2" readonly>
+
+    <label asp-for="Evento.ValorUnitario">Valor Unitário</label>
+    <input type="number" asp-for="Evento.ValorUnitario" class="form-control mb-2" disabled>
+
+    <label asp-for="QuantidadeTicket">Quantidade de Ingressos</label>
+    <input type="number" value="1" min="1" max="10" asp-for="QuantidadeTicket" class="form-control mb-2">
+
+    <label asp-for="TotalVenda" class="form-control mt-5" disabled>Valor Total: R$ <span id="TotalVenda">@Model.Evento.ValorUnitario</label>
+
+    <button class="btn btn-success mt-4">Comprar</button>
+</form>
+
+@section scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script> 
+        var TotalVenda = 0.00;
+
+        function AtualizarValorTotal() {
+            $("#TotalVenda").html(TotalVenda);
+        }
+
+        $(document).on('input','#QuantidadeTicket', function(){
+            console.log($('#QuantidadeTicket').val());
+            TotalVenda = $("#QuantidadeTicket").val() * $("#Evento_ValorUnitario").val();
+
+        AtualizarValorTotal();
+        });
+    </script>
+}
