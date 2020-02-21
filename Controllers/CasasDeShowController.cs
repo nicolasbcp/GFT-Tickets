@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using GFT_Tickets.DTO;
 using GFT_Tickets.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GFT_Tickets.Controllers
 {
+    [Authorize(Policy="AdminGFT")]
     public class CasasDeShowController : Controller
     {
         private readonly ApplicationDbContext database;

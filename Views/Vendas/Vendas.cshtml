@@ -1,15 +1,16 @@
 @model GFT_Tickets.Models.Venda
 
-<h2>Confirmar Compra</h2>
+<h2 style="text-align: center;">Confirmar Compra</h2>
 
-<form class="form-horizontal" asp-controller="Vendas" asp-action="Historico" method="POST">
+<form class="form-horizontal" asp-controller="Vendas" asp-action="Comprar" method="POST">
     <input type="hidden" asp-for="Id" value="0">
+    <input type="hidden" asp-for="EventoID">
     
     <label asp-for="Evento.Nome" class="mt-4">Nome</label>
-    <input type="text" asp-for="Evento.Nome" class="form-control mb-2" readonly>
+    <input type="text" asp-for="Evento.Nome" class="form-control mb-2" disabled>
 
     <label asp-for="Evento.Data">Data</label>
-    <input type="date" asp-for="Evento.Data" class="form-control mb-2" readonly>
+    <input type="date" asp-for="Evento.Data" class="form-control mb-2" disabled>
 
     <label asp-for="Evento.ValorUnitario">Valor Unitário</label>
     <input type="number" asp-for="Evento.ValorUnitario" class="form-control mb-2" disabled>
@@ -19,7 +20,7 @@
 
     <label asp-for="TotalVenda" class="form-control mt-5" disabled>Valor Total: R$ <span id="TotalVenda">@Model.Evento.ValorUnitario</label>
 
-    <button class="btn btn-success mt-4">Comprar</button>
+    <button class="btn btn-outline-success mt-4" type="submit">Comprar</button>
 </form>
 
 @section scripts {

@@ -1,6 +1,6 @@
 @model GFT_Tickets.DTO.GeneroMusicalDTO;
 
-<h1 class="h2">Editar Gênero Musical</h1>
+<h1 class="h2" style="text-align: center;">Editar Gênero Musical</h1>
 <hr>
 <form class="form-horizontal" asp-controller="GeneroMusical" asp-action="Atualizar" method="POST">
     <input type="hidden" asp-for="Id">
@@ -9,5 +9,5 @@
     <input type="text" asp-for="Nome" class="form-control mb-2" placeholder="Nome do Gênero Musical">
     <span asp-validation-for="Nome"></span>
     
-    <button class="btn btn-success mt-4">Atualizar</button>
+    <button class="btn btn-outline-success mt-4">Atualizar</button>
 </form>

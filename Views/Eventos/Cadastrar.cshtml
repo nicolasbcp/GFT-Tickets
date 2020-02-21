@@ -1,6 +1,6 @@
 @model GFT_Tickets.Models.Evento
 
-<h2>Cadastrar Evento</h2>
+<h2 style="text-align: center;">Cadastrar Evento</h2>
 
 <form class="form-horizontal" asp-controller="Eventos" asp-action="Salvar" method="POST">
     <input type="hidden" asp-for="Id" value="0">
@@ -28,7 +28,7 @@
     <select class="form-control mb-2" asp-for="GeneroMusicalID" asp-items='@ViewBag.GeneroMusical'></select>
     
 
-    <button class="btn btn-success mt-4">Cadastrar</button>
+    <button class="btn btn-outline-success mt-4">Cadastrar</button>
 </form>
 
 @section scripts {

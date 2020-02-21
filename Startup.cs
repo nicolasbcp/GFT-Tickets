@@ -34,6 +34,8 @@ namespace GFT_Tickets
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
            services.AddRazorPages();
+
+           services.AddAuthorization(options => options.AddPolicy("AdminGFT", policy => policy.RequireUserName("AdminGFT@Admin.com")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +64,7 @@ namespace GFT_Tickets
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Eventos}/{action=Eventos}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

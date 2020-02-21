@@ -2,41 +2,79 @@
 @{
     ViewData["Title"] = "Eventos";
 }
-<h1>@ViewData["Title"]</h1>
 
-<a class="btn btn-success mb-5" asp-controller="Eventos" asp-action="Cadastrar">Novo Evento</a>
+<h1 style="text-align: center;" class="mb-4">@ViewData["Title"]</h1>
 
-<table class="table table-striped">
-    <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Capacidade</th>
-        <th>Data</th>
-        <th>Valor Unitário</th>
-        <th>Casa de Show</th>
-        <th>Gênero Musical</th>
-        <th>Ações</th>
-    </tr>
-    <tbody>
+@if (User.Identity.IsAuthenticated) {
+    <table class="table table-striped">
+        <tr>
+            <th style="vertical-align: middle;">Id</th>
+            <th style="vertical-align: middle;">Nome</th>
+            <th style="vertical-align: middle;">Capacidade</th>
+            <th style="vertical-align: middle;">Data</th>
+            <th style="vertical-align: middle;">Valor Unitário</th>
+            <th style="vertical-align: middle;">Casa de Show</th>
+            <th style="vertical-align: middle;">Gênero Musical</th>
+            <th style="vertical-align: middle;">Admin</th>
+            <th style="vertical-align: middle;">Usuário</th>
+        </tr>
+        <tbody>
+            @foreach (var evento in Model)
+            {
+                <tr>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Id)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Nome)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Capacidade)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Data)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.ValorUnitario)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.CasaDeShow.Nome)</td>
+                    <td style="vertical-align: middle;"><img src="@Html.DisplayFor(model => evento.GeneroMusical.Imagem)" style="border-radius: 50%" height="100" width="100"></td>
+                    <td style="vertical-align: middle;">  
+                    
+                            <a class="btn btn-outline-success mb-2" href="/Eventos/Editar/@evento.Id">Editar</a> 
+
+                            <form asp-action="Deletar" asp-controller="Eventos" style="display: inline;">
+                                <input type="hidden" name="id" id="id" value="@evento.Id">
+                                <button class="btn btn-outline-danger btn-md">Excluir</button>
+                            </form>
+
+                    </td>
+                    <td style="vertical-align: middle;"><a class="btn btn-outline-primary" asp-controller="Vendas" asp-action="Vendas" asp-route-id="@evento.Id">
+                        Comprar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-outline-success mb-5" asp-controller="Eventos" asp-action="Cadastrar">Novo Evento</a>
+
+} else { 
+    <table class="table table-striped">
+        <tr>
+            <th style="vertical-align: middle;">Id</th>
+            <th style="vertical-align: middle;">Nome</th>
+            <th style="vertical-align: middle;">Capacidade</th>
+            <th style="vertical-align: middle;">Data</th>
+            <th style="vertical-align: middle;">Valor Unitário</th>
+            <th style="vertical-align: middle;">Casa de Show</th>
+            <th style="vertical-align: middle;">Gênero Musical</th>
+            <th style="vertical-align: middle;">Usuário</th>
+        </tr>
+        <tbody>
         @foreach (var evento in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(model => evento.Id)</td>
-                <td>@Html.DisplayFor(model => evento.Nome)</td>
-                <td>@Html.DisplayFor(model => evento.Capacidade)</td>
-                <td>@Html.DisplayFor(model => evento.Data)</td>
-                <td>@Html.DisplayFor(model => evento.ValorUnitario)</td>
-                <td>@Html.DisplayFor(model => evento.CasaDeShow.Nome)</td>
-                <td><img src="@Html.DisplayFor(model => evento.GeneroMusical.Imagem)" style="border-radius: 50%" height="100" width="100"></td>
-                <td><a class="btn btn-success" href="/Eventos/Editar/@evento.Id">Editar</a> 
-
-                <form asp-action="Deletar" asp-controller="Eventos" style="display: inline;">
-                    <input type="hidden" name="id" id="id" value="@evento.Id">
-                    <button class="btn btn-danger">Excluir</button>
-                </form>
-                <a class="btn btn-primary mt-2 ml-4" asp-controller="Vendas" asp-action="Vendas" asp-route-id="@evento.Id">Comprar</a>
-                </td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Id)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Nome)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Capacidade)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.Data)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.ValorUnitario)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => evento.CasaDeShow.Nome)</td>
+                <td style="vertical-align: middle;"><img src="@Html.DisplayFor(model => evento.GeneroMusical.Imagem)" style="border-radius: 50%" height="100" width="100"></td>
+                <td style="vertical-align: middle;"><a class="btn btn-outline-primary" asp-controller="Vendas" asp-action="Vendas" asp-route-id="@evento.Id">
+                    Comprar</a></td>
             </tr>
         }
     </tbody>
-</table>
+    </table>
+}

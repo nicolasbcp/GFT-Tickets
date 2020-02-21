@@ -6,45 +6,59 @@
     <title>GFT Tickets</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="shortcut icon" type="image/jpg" href="https://images.stockopedia.com/security_images/gft-technologies-se-ger-gft.jpg"/>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Eventos" asp-action="Eventos">Tickets</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Eventos" asp-action="Eventos">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgwAAABgCAMAAABG8do1AAAAhFBMVEUhPn////8dO31KYZW+xdcAJXT19fgTNnsnQoF5hagOM3qDkbPl6PCSnLj4+fxFWpAALnhVapvM0uFicZwAKXV/jbLc4OsAL3ju8PSbp8MaOX06UYrByNnS2OXq7fMAIHKLl7dsfaetts6lr8ktSIZpeqVPZJd1g6ozTYizvNI+VY1jdqPuy8chAAAD3klEQVR4nO3d7XKiMBiGYRq1sVERFUVRXKR+tPb8z28dqxAkCDu7bd1wX/9aQ3HePI0QAjot4MIRwIUDAAAAAAAAAAAAAAAAAACABmIdKU4pCGXg+6rrKN8PVEgmGksosRxNk/H8bJzEk2MojQ2rfKboL9ex/8F6+PALqtFoInDiVf8pZ91+CdRtl4llsmrft1qc2qnXimbnVqW6FfvI/aUDcfiX1HHw/GTQj7c3o4MYrk0Nc6JTO39Wp1UZ0a3ciWagvrI2DROqRb+s0NHGzw0OYljaNDV26oRhfOcdia5LGH5EOIzulTrZ6qMwYbCaalUM/JGnjQ2EwWZyV1n3aJilgTBYTC6NR455m+yDgjDYSxxznxHrVXzs/PrVeZu2tc7cBdoGNcJwPpuobHb/bIIwfL9grEeh1wrUeRAQMtgeri/FnraBFobBS4nJqV24036RBis55FuVIQw/QE21miahPsUkZGd/jsNBz4Iehn0gzc55CtMflUgTN/VuWpUgDN9PvGUfBm4sb2cbpZOcKu3lN8nCMKo78dfNwmCc4Da8McLw7dQgq+jOL74uvF7Pu/kVYbCUP08L+mouaOEqEGGwVLhP6xkVPiNKEAZLBUlaz0nNXiIMtuqmh4/jbt2VLITBTmK//vNyEgY7ycO1mm5LHxiEYeogfb16nqEYEcLw+FR8reZcm28+HVb2ipbXNGhhWBjanWwKOyIMj0+9XqsZ6XMM+uRDanL9f6++NhF1b3dEGB5fdjLxro8MfxuG4tVIwvD4sjAkhKHpGBmQyo4Z2oSh6dTiWs1/egBJGP5H2qmlfmmSs4km0iadhvqqluNH6m4YzLdMGe6UIgyPLxylV7B7ejlFeCHV3TC0fM+k2DOE4fGJbXqhamW+TiXvhoFrEzYJ2mk9W8aOJQzNIbNjgrZh0RthaBQvLbl7MHUTYWiQbNrpaX009BNhaJBwn62I7bcKHRVuCUODaEPD03py8yQGtcxutyIM9hNKn09Mjipd0iTVsZcNG4ShCfI35PdXH2HH9wLPDz7e9Zj0j4aVToTBNkF8U9n5rN0e3zzKZe6k/U4YbKbeK4vt7rJqEwar+YuKWs+HWrEJg93k4G7lZ6PcVSzCYLfgbVVaaDfp5PqcMNhOiJeSJSvRqPBQUMJgO+lPx4UnffXbI49b8ptIOvuXZOZeOsF9jha7oSp2txjOni9GdW/W7a7czy3c+mFYP9fmxnVvIUdtQgYduZxsptPNxzDwlfmRDcLvXNT/CoLgukntXsv2UgNZ+CLi/GAuvmsCAAAAAAAAAAAAAAAAAAAAAB6KAC6cFnDxG3GBdCk6IKtUAAAAAElFTkSuQmCC" 
+                    alt="" width="90px" height="20px" class="mr-3">
+                    Tickets
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial"/>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Eventos" asp-action="Eventos">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Eventos" asp-action="Eventos">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CasasDeShow" asp-action="CasasDeShow">Casas de Show</a>
+                            @if (User.Identity.IsAuthenticated) {
+                                    <a class="nav-link text-white" asp-area="" asp-controller="CasasDeShow" asp-action="CasasDeShow">Casas de Show</a>
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Eventos" asp-action="Eventos">Eventos</a>
+                            @if (User.Identity.IsAuthenticated) {
+                                <a class="nav-link text-white" asp-area="" asp-controller="Eventos" asp-action="Eventos">Eventos</a>
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="GeneroMusical" asp-action="GeneroMusical">Gênero Musical</a>
+                            @if (User.Identity.IsAuthenticated) {
+                                <a class="nav-link text-white" asp-area="" asp-controller="GeneroMusical" asp-action="GeneroMusical">Gênero Musical</a>
+                            }
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Vendas" asp-action="Historico">Histórico de Vendas</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container" style="padding-top: 75px;">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - GFT Tickets - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted bg-dark">
+        <div class="container text-white" style="text-align: center;">
+            &copy; 2020 - GFT Tickets
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

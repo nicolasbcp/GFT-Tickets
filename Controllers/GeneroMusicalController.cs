@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using GFT_Tickets.Data;
 using GFT_Tickets.DTO;
 using GFT_Tickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GFT_Tickets.Controllers
 {
+    [Authorize(Policy="AdminGFT")]
     public class GeneroMusicalController : Controller
     {
         private readonly ApplicationDbContext database;

@@ -1,6 +1,6 @@
 @model GFT_Tickets.DTO.EventoDTO;
 
-<h1 class="h2">Editar Evento</h1>
+<h1 class="h2" style="text-align: center;">Editar Evento</h1>
 <hr>
 <form class="form-horizontal" asp-controller="Eventos" asp-action="Atualizar" method="POST">
     <input type="hidden" asp-for="Id">
@@ -27,5 +27,5 @@
     <label asp-for="GeneroMusicalID">Gênero Musical</label>
     <select class="form-control mb-2" asp-for="GeneroMusicalID" asp-items='@ViewBag.GeneroMusical'></select>
     
-    <button class="btn btn-success mt-4">Atualizar</button>
+    <button class="btn btn-outline-success mt-4">Atualizar</button>
 </form>

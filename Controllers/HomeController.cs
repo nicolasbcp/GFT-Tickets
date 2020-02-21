@@ -19,7 +19,7 @@ namespace GFT_Tickets.Controllers
             _logger = logger;
         }
 
-        public IActionResult Eventos()
+        public IActionResult Index()
         {
             return View();
         }

@@ -6,7 +6,6 @@ namespace GFT_Tickets.Models
     public class Venda
     {
         public int Id {get; set;}
-        public Usuario Usuario {get; set;}
         [ForeignKey("EventoID")]
         public Evento Evento {get; set;}
         public int EventoID {get; set;}

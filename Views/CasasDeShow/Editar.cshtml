@@ -1,6 +1,6 @@
 @model GFT_Tickets.DTO.CasaDeShowDTO;
 
-<h1 class="h2">Editar Casa de Show</h1>
+<h1 class="h2" style="text-align: center;">Editar Casa de Show</h1>
 <hr>
 <form class="form-horizontal" asp-controller="CasasDeShow" asp-action="Atualizar" method="POST">
     <input type="hidden" asp-for="Id">
@@ -13,5 +13,5 @@
     <input type="text" asp-for="Endereco" class="form-control" placeholder="Endereço da Casa de Show">
     <span asp-validation-for="Endereco"></span>
     
-    <button class="btn btn-success mt-4">Atualizar</button>
+    <button class="btn btn-outline-success mt-4">Atualizar</button>
 </form>

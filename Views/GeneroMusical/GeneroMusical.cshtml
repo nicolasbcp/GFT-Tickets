@@ -3,9 +3,7 @@
     ViewData["Title"] = "Gênero Musical";
 }
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<h1>@ViewData["Title"]</h1>
-
-<a class="btn btn-success mb-5" asp-controller="GeneroMusical" asp-action="Cadastrar">Novo Gênero Musical</a>
+<h1 style="text-align: center;" class="mb-4">@ViewData["Title"]</h1>
 
 <table class="table table-striped">
     <tr>
@@ -18,19 +16,21 @@
         @foreach (var generomusical in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(model => generomusical.Id)</td>
-                <td>@Html.DisplayFor(model => generomusical.Nome)</td>
-                <td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => generomusical.Id)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => generomusical.Nome)</td>
+                <td style="vertical-align: middle;">
                     <img src="@generomusical.Imagem" style="border-radius: 50%" height="100" width="100" alt="">
-                <td>
-                    <a class="btn btn-success" href="/GeneroMusical/Editar/@generomusical.Id">Editar</a> 
+                <td style="vertical-align: middle;">
+                    <a class="btn btn-outline-success" href="/GeneroMusical/Editar/@generomusical.Id">Editar</a> 
 
                     <form asp-action="Deletar" asp-controller="GeneroMusical" style="display: inline;">
                         <input type="hidden" name="id" id="id" value="@generomusical.Id">
-                        <button class="btn btn-danger">Excluir</button>
+                        <button class="btn btn-outline-danger">Excluir</button>
                     </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<a class="btn btn-outline-success mb-5" asp-controller="GeneroMusical" asp-action="Cadastrar">Novo Gênero Musical</a>

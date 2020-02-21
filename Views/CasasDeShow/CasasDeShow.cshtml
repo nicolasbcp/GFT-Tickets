@@ -2,9 +2,7 @@
 @{
     ViewData["Title"] = "Casas de Show";
 }
-<h1>@ViewData["Title"]</h1>
-
-<a class="btn btn-success mb-5" asp-controller="CasasDeShow" asp-action="Cadastrar">Nova Casa de Show</a>
+<h1 style="text-align: center;" class="mb-4">@ViewData["Title"]</h1>
 
 <table class="table table-striped">
     <tr>
@@ -17,17 +15,19 @@
         @foreach (var casadeshow in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(model => casadeshow.Id)</td>
-                <td>@Html.DisplayFor(model => casadeshow.Nome)</td>
-                <td>@Html.DisplayFor(model => casadeshow.Endereco)</td>
-                <td><a class="btn btn-success" href="/CasasDeShow/Editar/@casadeshow.Id">Editar</a> 
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => casadeshow.Id)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => casadeshow.Nome)</td>
+                <td style="vertical-align: middle;">@Html.DisplayFor(model => casadeshow.Endereco)</td>
+                <td style="vertical-align: middle;"><a class="btn btn-outline-success" href="/CasasDeShow/Editar/@casadeshow.Id">Editar</a> 
 
                 <form asp-action="Deletar" asp-controller="CasasDeShow" style="display: inline;">
                     <input type="hidden" name="id" id="id" value="@casadeshow.Id">
-                    <button class="btn btn-danger">Excluir</button>
+                    <button class="btn btn-outline-danger">Excluir</button>
                 </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<a class="btn btn-outline-success mb-5" asp-controller="CasasDeShow" asp-action="Cadastrar">Nova Casa de Show</a>
